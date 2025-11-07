@@ -1,3 +1,37 @@
+/* GLOBAL RESET + FLUID CONTAINER */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background-color: #0b0e17;
+  color: #f8fafc;
+}
+
+/* Consistent content width across pages */
+.page-container {
+  padding-top: 90px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 20px 70px; /* space for navbar + footer */
+  min-height: calc(100vh - 90px - 50px);
+  box-sizing: border-box;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 80px 16px 60px;
+  }
+}
+
 /* ===== RESET ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -71,3 +105,41 @@ footer {
   .page-container { max-width: 92%; }
   footer { font-size: 0.8rem; }
 }
+main, 
+.page-container, 
+.about, 
+.home-viewport {
+  padding-top: 100px; /* ✅ Adjust to match your navbar height */
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #0f172a; /* your dark theme */
+  color: #f8fafc;
+}
+
+/* All main page sections */
+.page-container {
+  min-height: calc(100vh - 130px); /* leaves space for navbar & footer */
+  padding-top: 90px;  /* equal to navbar height */
+  padding-bottom: 60px; /* equal to footer height */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* content starts below navbar */
+}
+.centered-section {
+  min-height: calc(100vh - 130px); /* leaves space for navbar + footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  /* ✅ centers vertically */
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+

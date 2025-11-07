@@ -1,6 +1,5 @@
 import "../styling/Resume.css";
 
-
 function Resume() {
   return (
     <div className="resume">

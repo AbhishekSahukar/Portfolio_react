@@ -1,9 +1,12 @@
 /* === Container === */
 .contact-container {
+  min-height: calc(100vh - 140px); /* leaves room for navbar + footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centers vertically */
   text-align: center;
-  color: #f8fafc;
-  max-width: 700px;
-  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* === Heading (gradient fix + consistency) === */
