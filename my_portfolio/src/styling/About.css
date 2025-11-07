@@ -1,0 +1,43 @@
+.about {
+  max-width: 800px;
+  margin: 60px auto;
+  line-height: 1.7;
+  color: #94a3b8;
+  padding: 0 20px;
+}
+
+.about h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #60a5fa, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about h3 {
+  color: #60a5fa;
+  margin-top: 30px;
+}
+
+.about ul {
+  list-style-type: square;
+  margin-left: 25px;
+}
+ul {
+  display: inline-block;        /* allows centering as a block */
+  text-align: left;             /* text inside stays left-aligned */
+  list-style-type: disc;        /* normal bullet style */
+  list-style-position: outside; /* bullet outside text block */
+  padding-left: 20px;           /* small gap between bullet and text */
+  margin: 0 auto;               /* centers the block itself */
+}
+
+li {
+  margin: 6px 0;                /* reduce vertical spacing */
+  line-height: 1.5;
+  color: #94a3b8;               /* clean, light blue text */
+  font-size: 1rem;
+}
+
+

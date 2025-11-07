@@ -1,0 +1,35 @@
+.resume {
+  text-align: center;
+  margin-top: 100px;
+  color: #94a3b8;
+}
+
+.resume h1 {
+  background: linear-gradient(90deg, #60a5fa, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.download-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #60a5fa, #9333ea);
+  color: #ffffff; /* solid white text */
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+}
+
+.download-btn:hover {
+  /* keep text color white and make glow stronger */
+  color: #ffffff;
+  background: linear-gradient(90deg, #4f8bf9, #7c3aed);
+  box-shadow: 0 0 25px rgba(96, 165, 250, 0.6);
+  transform: scale(1.05);
+  opacity: 0.95;
+}

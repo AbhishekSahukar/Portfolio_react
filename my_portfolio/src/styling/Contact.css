@@ -1,0 +1,100 @@
+/* === Container === */
+.contact-container {
+  text-align: center;
+  color: #f8fafc;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* === Heading (gradient fix + consistency) === */
+.contact-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #60a5fa, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;  /* keeps gradient tight to text */
+}
+
+/* === Intro text === */
+.contact-intro {
+  font-size: 1rem;
+  color: #94a3b8;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Contact list box === */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px 40px;
+  border-radius: 12px;
+  margin: 0 auto;
+  width: fit-content;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  text-align: left; /* ensures all items align neatly left */
+}
+
+/* === Contact item rows === */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin: 6px 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  min-width: 320px;
+}
+
+.contact-item:hover {
+  background: rgba(96, 165, 250, 0.15);
+  transform: translateX(5px);
+}
+
+/* === Icon styling === */
+.icon {
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+}
+
+/* === Links === */
+.contact-item a {
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-word; /* helps long URLs fit neatly */
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .contact-list {
+    padding: 20px 25px;
+  }
+
+  .contact-item {
+    min-width: 260px;
+    font-size: 0.95rem;
+  }
+
+  .contact-container h2 {
+    font-size: 1.7rem;
+  }
+}
