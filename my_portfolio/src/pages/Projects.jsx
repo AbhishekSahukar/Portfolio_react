@@ -13,10 +13,10 @@ function Projects() {
       desc: "FastAPI backend + Mistral 7B + FAISS vector search for contextual responses.",
       tech: ["FastAPI", "Docker", "Azure", "Mistral 7B"],
     },
-    {
-      title: "Todolist Web App",
-      desc: "CRUD-based task manager with Flask and PostgreSQL, featuring clean UI and automated tests.",
-      tech: ["Flask", "PostgreSQL", "Pytest"],
+ {
+      title: "🧠 DreamBot – AI-Powered Dream Interpretation Web App",
+      desc: `Developed a full-stack AI chatbot that interprets user-submitted dreams using MistralAI and Tavily Search API for real-time interpretations. Built a dynamic React.js calming UI for enhanced UX.`,
+      tech: ["FastAPI", "MistralAI", "Tavily API", "React.js", "OpenRouter"],
     },
   ];
 
