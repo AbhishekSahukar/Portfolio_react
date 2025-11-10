@@ -1,5 +1,6 @@
 import React from "react";
-import "../styling/Navbar.css"; // ✅ correct path
+import { NavLink } from "react-router-dom";
+import "../styling/Navbar.css";
 
 function Navbar({ theme, setTheme }) {
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
@@ -7,13 +8,33 @@ function Navbar({ theme, setTheme }) {
   return (
     <nav className="navbar">
       <ul className="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/resume">Resume</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li>
+          <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : "")}>
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/projects" className={({ isActive }) => (isActive ? "active" : "")}>
+            Projects
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/resume" className={({ isActive }) => (isActive ? "active" : "")}>
+            Resume
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
+            Contact
+          </NavLink>
+        </li>
 
-        {/* 🌗 Theme Toggle Slider (inline, same size) */}
+        {/* 🌗 Theme Toggle Slider */}
         <li className="toggle-item">
           <div className="theme-toggle-wrapper">
             <input

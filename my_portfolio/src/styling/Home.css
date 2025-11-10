@@ -3,9 +3,10 @@
   height: calc(100vh - var(--nav-h) - var(--footer-h));
   width: 100%;
   display: grid;
-  place-items: center;        /* center both axes */
-  overflow: hidden;           /* prevent page scroll on Home */
-  padding: 0 16px;            /* small side padding */
+  place-items: center;        
+  overflow: hidden;           
+  padding: 0 16px; 
+  transform: translateY(-120px);
 }
 
 /* Keep content at a medium width so it feels balanced */
@@ -48,3 +49,5 @@
 
 /* IMPORTANT: remove any previous animations that could move content */
 .hero, .home-viewport { animation: none !important; }
+
+
