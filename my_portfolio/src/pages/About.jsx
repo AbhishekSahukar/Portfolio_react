@@ -13,7 +13,7 @@ function About() {
         and data-driven applications, gaining hands-on experience in Python, FastAPI, React, and cloud technologies like Azure and AWS.
       </p>
 
-      <h3>🧠 Specialties</h3>
+      <h3>🧠 Skills</h3>
       <ul>
         <li>Python Development, LangGraph, FastAPI, REST APIs</li>
         <li>LLM Integrations (OpenRouter, DeepSeek, Mistral)</li>
@@ -26,8 +26,8 @@ function About() {
         B.E. in Mechanical Engineering – Visvesvaraya Technological University (2023)
       </p>
 
-      <h3>🏋️ Hobbies</h3>
-      <p>Fitness and reading philosophy.</p>
+      <h3>🏋️ Hobby </h3>
+      <p>Fitness</p>
     </div>
   );
 }
