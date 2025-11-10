@@ -1,60 +1,108 @@
-/* Base Navbar (unchanged from your current look) */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1e2330;
-  padding: 12px 20px;
-  z-index: 9999;
-  gap: 20px;
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  overflow-x: auto; /* ✅ allows horizontal scrolling on small screens */
-  scrollbar-width: none; /* hide scrollbar in Firefox */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
-.navbar::-webkit-scrollbar {
-  display: none; /* hide scrollbar in Chrome/Safari */
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Nav Links */
-.navbar a {
+.nav-links a {
+  text-decoration: none;
+  color: #e2e8f0;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.85;
+}
+
+/* ===========================
+   THEME TOGGLE (slider)
+   =========================== */
+.theme-toggle-wrapper {
+  position: absolute;
+  right: 40px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  color: #cbd5e1;
-  font-size: 1rem;
-  padding: 8px 14px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  white-space: nowrap; /* ✅ prevents text wrapping */
+  justify-content: center;
 }
 
-.navbar a.active {
-  background: linear-gradient(90deg, #60a5fa, #9333ea);
-  color: white;
-  box-shadow: 0 0 12px rgba(96, 165, 250, 0.5);
+.theme-toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-.navbar a:hover {
-  background: rgba(96, 165, 250, 0.15);
+.slider {
+  width: 48px;
+  height: 24px;
+  background: #334155;
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  cursor: pointer;
+  position: relative;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
 }
 
-/* ✅ Responsive Tuning */
+/* Toggle icons */
+.sun, .moon {
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+/* Slider animation ball */
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Checked (light mode) */
+.theme-toggle:checked + .slider {
+  background: #cbd5e1;
+}
+
+.theme-toggle:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .navbar {
-    justify-content: flex-start; /* align to left for scroll */
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
     padding: 10px;
-    gap: 12px;
   }
 
-  .navbar a {
-    font-size: 0.95rem;
-    padding: 6px 12px;
+  .theme-toggle-wrapper {
+    position: static;
+    margin-top: 4px;
   }
 }
