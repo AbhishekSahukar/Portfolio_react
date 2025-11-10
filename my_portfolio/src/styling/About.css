@@ -119,3 +119,45 @@
     font-size: 0.85rem;
   }
 }
+/* ==========================================
+   FIX: Small screen height cutoff for About page
+   ========================================== */
+
+/* Let About page naturally expand beyond viewport */
+.about-page,
+.about {
+  min-height: auto !important;
+  height: auto !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: calc(var(--nav-h) + 60px) 20px calc(var(--footer-h) + 80px);
+  box-sizing: border-box;
+  overflow-y: visible !important;
+}
+
+/* Prevent footer overlap */
+@media (max-height: 850px) {
+  .about-page,
+  .about {
+    padding-bottom: 140px; /* extra space if screen is short */
+  }
+}
+
+/* On smaller desktops or tablets */
+@media (max-width: 1280px) {
+  .about-page,
+  .about {
+    padding-bottom: calc(var(--footer-h) + 100px);
+  }
+}
+
+/* Mobile safety */
+@media (max-width: 768px) {
+  .about-page,
+  .about {
+    padding-top: calc(var(--nav-h) + 40px);
+    padding-bottom: calc(var(--footer-h) + 80px);
+  }
+}
