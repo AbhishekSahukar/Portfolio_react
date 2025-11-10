@@ -199,3 +199,10 @@ footer,
 .page-container {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Safari/iOS height correction */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
