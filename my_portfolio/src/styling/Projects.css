@@ -1,22 +1,18 @@
-/* === Projects Container === */
+/* ========== PROJECTS PAGE ========== */
 .projects {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 100px 20px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 24px;
   box-sizing: border-box;
-  overflow-x: hidden; /* 🚫 no horizontal scroll anywhere */
-  overflow-y: auto;   /* ✅ vertical scroll only when needed */
 }
 
-/* === Projects Heading === */
 .projects h1 {
   font-size: 2.5rem;
+  margin-bottom: 40px;
   background: linear-gradient(90deg, #60a5fa, #9333ea);
   -webkit-background-clip: text;
   background-clip: text;
@@ -24,92 +20,190 @@
   text-align: center;
 }
 
-/* === Project Grid === */
+/* ========== GRID ========== */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* ✅ 3 equal columns on desktop */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
-  justify-items: center;
-  align-items: stretch;
   width: 100%;
-  box-sizing: border-box;
-  padding: 0 10px;
 }
 
-/* === Individual Card === */
+/* ========== CARD ========== */
 .project-card {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
   text-align: center;
-  width: 100%;
-  max-width: 300px;
-  min-height: 380px; /* ✅ equal height */
+  transition: all 0.3s ease;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 220px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-/* === Card Title === */
+.project-card.expanded {
+  height: auto;
+  background: rgba(255, 255, 255, 0.08);
+  transition: height 0.6s ease, background 0.4s ease;
+}
+
+/* ========== CONTENT ========== */
+.project-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .project-card h2 {
-  color: #60a5fa;
+  font-size: 1rem;
   margin-bottom: 10px;
-  word-wrap: break-word;
+  color: #e2e8f0;
 }
 
-/* === Tech Tags === */
-.tech-list span {
-  display: inline-block;
-  background-color: rgba(96, 165, 250, 0.1);
-  color: #60a5fa;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 6px;
+/* Center short description vertically */
+.description-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+
+.project-card .description {
   font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* === General Layout === */
-.page-container, .projects, .about, .home-viewport {
-  padding-top: 90px;
-  box-sizing: border-box;
+/* ========== TECH TAGS ========== */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  margin-top: 10px;
+  margin-bottom: 14px; /* 👈 adds a clean gap before See less */
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+.project-card.expanded .tech-list {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* === Mobile Responsive === */
-@media (max-width: 1024px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
+.tech-list span {
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+/* ========== SEE MORE BUTTON ========== */
+.see-more-wrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 4px; /* 👈 small padding for breathing space */
+}
+
+.see-more-btn {
+  background: transparent;
+  border: 1px solid #6366f1;
+  color: #a5b4fc;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+}
+
+.see-more-btn:hover {
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+  color: white;
+  border-color: transparent;
+}
+
+/* ========== LOAD MORE BUTTON ========== */
+.load-more-btn {
+  margin-top: 40px;
+  background: transparent;
+  border: 1px solid #6366f1;
+  color: #a5b4fc;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+  color: white;
+  border-color: transparent;
+}
+
+/* Inactive (disabled) state */
+.load-more-btn.inactive,
+.load-more-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border: 1px solid #555;
+  color: #888;
+  background: transparent;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+  .projects h1 {
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .project-grid {
-    grid-template-columns: 1fr; /* ✅ stacked cards on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
   }
 
   .project-card {
-    width: 100%;
-    max-width: 95%;
-    margin: 0 auto;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 80px 16px 60px;
   }
 
   .projects h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
-  .projects {
-    padding-bottom: 100px;
-    overflow-y: auto;
+  .project-card {
+    padding: 14px;
+    height: 180px;
+    font-size: 0.85rem;
+  }
+
+  .load-more-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
   }
 }

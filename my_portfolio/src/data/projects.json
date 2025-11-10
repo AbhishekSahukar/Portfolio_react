@@ -1,0 +1,34 @@
+[
+  {
+    "title": "MetaTableAI – LLM-Powered Table Extractor",
+    "shortDesc": "Built a parser that extracts key parameters from complex PDF tables using LangGraph + OpenRouter APIs.",
+    "fullDesc": "MetaTableAI automates parameter extraction from messy tabular PDFs by combining LangGraph nodes with dynamic prompt chaining. It detects headers, context, and units with fuzzy alignment to produce structured JSON outputs for analytics pipelines.",
+    "tech": ["Python", "LangGraph", "OpenRouter", "DeepSeek Chat v3"]
+  },
+  {
+    "title": "RAG-based Personal AI Chatbot",
+    "shortDesc": "FastAPI backend + Mistral 7B + FAISS vector search for contextual responses.",
+    "fullDesc": "Developed a lightweight RAG system with FastAPI and FAISS vector indexing. Uses local embeddings for privacy, contextual memory persistence, and streaming chat responses .",
+    "tech": ["FastAPI", "Docker", "Azure", "Mistral 7B"]
+  },
+  {
+    "title": "DreamCatcher – AI-Powered Dream Interpretation Web App",
+    "shortDesc": "Developed a full-stack AI chatbot that interprets user dreams using MistralAI and Tavily Search.",
+    "fullDesc": "DreamCatcher fetches live symbolic meanings via Tavily API, analyzes sentiment and archetypes using MistralAI, and presents calming visual feedback through a React UI built with soft gradients and subtle animations.",
+    "tech": ["FastAPI", "MistralAI", "Tavily API", "React.js", "OpenRouter"]
+  },
+
+  {
+    "title": "InfraMind – AI DevOps Agent for Cloud Infra",
+    "shortDesc": "An agentic system that simulates aws services like EC2 and S3 through prompts",
+    "fullDesc": "InfraMind is an intelligent assistant that lets you manage AWS resources using natural language.It runs fully locally with LocalStack and uses LLMs (DeepSeek/OpenRouter) for intent detection.",
+    "tech": ["Python", "LangGraph", "AWS", "Deepseek"]
+  },
+
+  {
+    "title": "AskSheetsAI",
+    "shortDesc": "Conversational AI interface for Excel and Google Sheets.",
+    "fullDesc": "Supports querying and extracts required data from excel and google sheets",
+    "tech": ["Python",  "GPT", "Google Sheets API"]
+  }
+]

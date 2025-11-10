@@ -9,9 +9,9 @@ function Home() {
         <h1>👋 Hello, I’m</h1>
         <h2>Abhishek Sahukar Srinivas</h2>
         <p>
-          A highly motivated and ambitious individual with knowledge and
-          experience in software design, development, and cloud. Proven ability
-          to lead by example, consistently hit targets, and organize time efficiently.
+I’m an Engineer with a passion for building modern, efficient, and user-focused applications.  
+I enjoy turning ideas into functional products through clean design, structured logic, and attention to detail.  
+Currently, I’m working on projects that combine automation, intelligent systems, and thoughtful design to solve real-world problems.
         </p>
         <p>🌍 Based in Bengaluru, India</p>
       </div>
