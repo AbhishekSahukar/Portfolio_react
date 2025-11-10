@@ -1,103 +1,129 @@
-/* === Container === */
-.contact-container {
-  min-height: calc(100vh - 140px); /* leaves room for navbar + footer */
+/* ===============================
+   CONTACT PAGE BASE STYLING
+   =============================== */
+
+.contact-page {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center; /* centers vertically */
-  text-align: center;
+  min-height: calc(100vh - 120px); /* leave space for navbar & footer */
+  padding: 60px 20px;
   box-sizing: border-box;
 }
 
-/* === Heading (gradient fix + consistency) === */
+/* Main content container */
+.contact-container {
+  text-align: center;
+  max-width: 650px;
+  width: 100%;
+  background: var(--card-bg, rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading */
 .contact-container h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
+  margin-bottom: 16px;
   background: linear-gradient(90deg, #60a5fa, #9333ea);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;  /* keeps gradient tight to text */
 }
 
-/* === Intro text === */
+/* Intro text */
 .contact-intro {
   font-size: 1rem;
-  color: #94a3b8;
+  line-height: 1.5;
+  color: var(--text-color, #cbd5e1);
   margin-bottom: 30px;
-  line-height: 1.6;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* === Contact list box === */
+/* Contact items list */
 .contact-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 30px 40px;
-  border-radius: 12px;
-  margin: 0 auto;
-  width: fit-content;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  text-align: left; /* ensures all items align neatly left */
+  gap: 18px;
+  align-items: center;
 }
 
-/* === Contact item rows === */
+/* Each contact item */
 .contact-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 10px 16px;
-  border-radius: 8px;
-  margin: 6px 0;
-  transition: background 0.3s ease, transform 0.3s ease;
-  width: 100%;
-  min-width: 320px;
 }
 
-.contact-item:hover {
-  background: rgba(96, 165, 250, 0.15);
-  transform: translateX(5px);
+.contact-item .icon {
+  font-size: 1.3rem;
 }
 
-/* === Icon styling === */
-.icon {
-  font-size: 1.1rem;
-  width: 24px;
-  text-align: center;
-}
-
-/* === Links === */
 .contact-item a {
-  color: #60a5fa;
+  color: var(--link-color, #60a5fa);
   text-decoration: none;
-  font-weight: 500;
-  word-break: break-word; /* helps long URLs fit neatly */
+  transition: color 0.3s ease;
 }
 
 .contact-item a:hover {
-  text-decoration: underline;
+  color: #9333ea;
 }
 
-/* === Responsive === */
-@media (max-width: 600px) {
-  .contact-list {
-    padding: 20px 25px;
+/* ===============================
+   RESPONSIVE (MOBILE VIEW)
+   =============================== */
+@media (max-width: 768px) {
+  .contact-page {
+    align-items: flex-start;
+    padding-top: 140px; /* space for navbar */
+    padding-bottom: 100px; /* space for footer */
+    min-height: auto;
   }
 
-  .contact-item {
-    min-width: 260px;
-    font-size: 0.95rem;
+  .contact-container {
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 12px;
   }
 
   .contact-container h2 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
   }
+
+  .contact-intro {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .contact-item {
+    font-size: 0.95rem;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-item a {
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+}
+
+/* ===============================
+   LIGHT MODE OVERRIDES
+   =============================== */
+body.light-mode .contact-container {
+  background: rgba(255, 255, 255, 0.8);
+  color: #1e293b;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .contact-item a {
+  color: #2563eb;
+}
+
+body.light-mode .contact-item a:hover {
+  color: #9333ea;
 }

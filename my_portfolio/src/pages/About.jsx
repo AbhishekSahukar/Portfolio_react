@@ -8,7 +8,9 @@ function About() {
       <p>
         I'm <strong>Abhishek Sahukar Srinivas</strong>, an engineer with hands-on experience in
         software design, cloud, and Generative AI. I combine technical skill with design thinking
-        to build intelligent, elegant solutions.
+        to build intelligent, elegant solutions.<><br /></>
+        Over the years, I’ve worked across Design, backend systems, web development
+        and data-driven applications, gaining hands-on experience in Python, FastAPI, React, and cloud technologies like Azure and AWS.
       </p>
 
       <h3>🧠 Specialties</h3>
@@ -25,7 +27,7 @@ function About() {
       </p>
 
       <h3>🏋️ Hobbies</h3>
-      <p>Fitness, reading philosophy, and experimenting with new AI tools.</p>
+      <p>Fitness and reading philosophy.</p>
     </div>
   );
 }

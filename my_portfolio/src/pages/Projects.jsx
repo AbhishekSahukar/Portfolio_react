@@ -1,41 +1,70 @@
+import { useState } from "react";
+import projectsData from "../data/projects.json";
 import "../styling/Projects.css";
 
-
 function Projects() {
-  const projects = [
-    {
-      title: "MetaTableAI – LLM-Powered Table Extractor",
-      desc: "Built a parser that extracts key parameters from complex PDF tables using LangGraph + OpenRouter APIs.",
-      tech: ["Python", "LangGraph", "OpenRouter", "DeepSeek Chat v3"],
-    },
-    {
-      title: "RAG-based Personal AI Chatbot",
-      desc: "FastAPI backend + Mistral 7B + FAISS vector search for contextual responses.",
-      tech: ["FastAPI", "Docker", "Azure", "Mistral 7B"],
-    },
- {
-      title: "🧠 DreamBot – AI-Powered Dream Interpretation Web App",
-      desc: `Developed a full-stack AI chatbot that interprets user-submitted dreams using MistralAI and Tavily Search API for real-time interpretations. Built a dynamic React.js calming UI for enhanced UX.`,
-      tech: ["FastAPI", "MistralAI", "Tavily API", "React.js", "OpenRouter"],
-    },
-  ];
+  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6);
+
+  const toggleExpand = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const showMore = () => {
+    setVisibleCount((prev) => prev + 6);
+  };
+
+  const projectsToShow = projectsData.slice(0, visibleCount);
+  const hasMore = visibleCount < projectsData.length;
 
   return (
     <div className="projects">
       <h1>🚀 Projects</h1>
       <div className="project-grid">
-        {projects.map((p) => (
-          <div key={p.title} className="project-card">
-            <h2>{p.title}</h2>
-            <p>{p.desc}</p>
-            <div className="tech-list">
-              {p.tech.map((t) => (
-                <span key={t}>{t}</span>
-              ))}
+        {projectsToShow.map((p, index) => {
+          const isExpanded = expandedIndex === index;
+          return (
+            <div
+              key={p.title}
+              className={`project-card ${isExpanded ? "expanded" : ""}`}
+            >
+              <div className="project-content">
+                <h2>{p.title}</h2>
+                <div className="description-container">
+                  <p className="description">
+                    {isExpanded ? p.fullDesc : p.shortDesc}
+                  </p>
+                </div>
+
+                {isExpanded && (
+                  <div className="tech-list fade-in">
+                    {p.tech.map((t) => (
+                      <span key={t}>{t}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="see-more-wrapper">
+                <button
+                  className="see-more-btn"
+                  onClick={() => toggleExpand(index)}
+                >
+                  {isExpanded ? "See less" : "See more"}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
+
+      <button
+        className={`load-more-btn ${!hasMore ? "inactive" : ""}`}
+        onClick={hasMore ? showMore : undefined}
+        disabled={!hasMore}
+      >
+        {hasMore ? "Show more projects" : "All projects loaded"}
+      </button>
     </div>
   );
 }
