@@ -1,163 +1,104 @@
-/* ===========================
-   Layout & Base Styling
-=========================== */
-.about {
-  max-width: 820px;
-  margin: 0 auto;  /* centered with top/bottom balance */
-  line-height: 1.7;
-  color: #94a3b8;
-  padding: 0 16px;
-  text-align: center;
-  box-sizing: border-box;
-  padding-top: 90px;
-}
-
-/* ===========================
-   Headings
-=========================== */
-.about h1 {
-  font-size: 2.4rem;
-  margin-bottom: 25px;
-  background: linear-gradient(90deg, #60a5fa, #9333ea);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-}
-
-.about h3 {
-  color: #60a5fa;
-  margin-top: 35px;
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-
-/* ===========================
-   Paragraphs
-=========================== */
-.about p {
-  margin-bottom: 16px;
-  font-size: 1rem;
-  color: #94a3b8;
-  text-align: center;
-}
-
-/* ===========================
-   Lists — centered & neat
-=========================== */
-.about ul {
-  display: inline-block;        /* makes the list itself centerable */
-  text-align: left;             /* keeps items left aligned inside */
-  list-style-type: disc;        /* normal round bullets */
-  list-style-position: outside; /* bullets stay outside */
-  padding-left: 20px;
-  margin: 12px auto 0 auto;     /* centers block, adds top space */
-}
-
-.about li {
-  margin: 6px 0;
-  line-height: 1.5;
-  color: #94a3b8;
-  font-size: 1rem;
-}
-
-/* ===========================
-   Responsive Breakpoints
-=========================== */
-@media (max-width: 992px) {
-  .about {
-    padding: 0 20px;
-    margin: 80px auto 70px;
-  }
-}
-
-@media (max-width: 768px) {
-  .about {
-    margin: 70px auto 60px;
-    padding: 0 16px;
-  }
-
-  .about h1 {
-    font-size: 1.8rem;
-  }
-
-  .about h3 {
-    font-size: 1.1rem;
-    margin-top: 25px;
-    text-align: center;
-  }
-
-  .about p {
-    font-size: 0.95rem;
-    text-align: center; /* better readability on narrow screens */
-  }
-
-  .about ul {
-    padding-left: 16px;
-  }
-
-  .about li {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .about {
-    margin: 60px auto 50px;
-    padding: 0 14px;
-  }
-
-  .about h1 {
-    font-size: 1.6rem;
-  }
-
-  .about p {
-    font-size: 0.9rem;
-  }
-
-  .about li {
-    font-size: 0.85rem;
-  }
-}
 /* ==========================================
-   FIX: Small screen height cutoff for About page
+   ABOUT PAGE (Vercel-safe layout)
    ========================================== */
 
-/* Let About page naturally expand beyond viewport */
-.about-page,
-.about {
-  min-height: auto !important;
+.about-page {
+  width: 100%;
+  min-height: 100%;
   height: auto !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: calc(var(--nav-h) + 60px) 20px calc(var(--footer-h) + 80px);
-  box-sizing: border-box;
+  padding: calc(var(--nav-h) + 60px) 20px calc(var(--footer-h) + 100px);
+  background-color: inherit;
+  color: inherit;
   overflow-y: visible !important;
+  box-sizing: border-box;
 }
 
-/* Prevent footer overlap */
-@media (max-height: 850px) {
-  .about-page,
-  .about {
-    padding-bottom: 140px; /* extra space if screen is short */
+/* Inner content container */
+.about-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Headings */
+.about-container h1 {
+  font-size: 2rem;
+  color: #c084fc;
+  margin-bottom: 20px;
+}
+
+/* Intro paragraph */
+.about-intro {
+  color: #94a3b8;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+/* Sections (skills, education, hobbies) */
+.about-section {
+  margin-bottom: 40px;
+}
+
+.about-section h3 {
+  font-size: 1.3rem;
+  color: #60a5fa;
+  margin-bottom: 10px;
+}
+
+.about-section ul {
+  list-style: none;
+  padding: 0;
+  color: #94a3b8;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   RESPONSIVE FIXES
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .about-page {
+    padding: calc(var(--nav-h) + 50px) 16px calc(var(--footer-h) + 90px);
+  }
+
+  .about-container h1 {
+    font-size: 1.7rem;
+  }
+
+  .about-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .about-intro {
+    font-size: 0.95rem;
   }
 }
 
-/* On smaller desktops or tablets */
-@media (max-width: 1280px) {
-  .about-page,
-  .about {
+/* Ensure scrollability on smaller screens */
+@media (max-height: 850px) {
+  .about-page {
+    padding-bottom: calc(var(--footer-h) + 160px);
+  }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .about-page {
+    padding-top: calc(var(--nav-h) + 40px);
     padding-bottom: calc(var(--footer-h) + 100px);
   }
-}
 
-/* Mobile safety */
-@media (max-width: 768px) {
-  .about-page,
-  .about {
-    padding-top: calc(var(--nav-h) + 40px);
-    padding-bottom: calc(var(--footer-h) + 80px);
+  .about-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .about-intro {
+    font-size: 0.9rem;
   }
 }
