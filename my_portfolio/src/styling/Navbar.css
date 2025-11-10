@@ -1,3 +1,6 @@
+/* ===============================
+   NAVBAR (DESKTOP)
+   =============================== */
 .navbar {
   width: 100%;
   height: 60px;
@@ -7,17 +10,22 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.05);
+  background-color: inherit; /* ✅ same as page background */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
 }
 
+/* Nav Links */
 .nav-links {
   display: flex;
   gap: 40px;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.nav-links li {
+  list-style: none;
 }
 
 .nav-links a {
@@ -31,9 +39,17 @@
   opacity: 0.85;
 }
 
-/* ===========================
-   THEME TOGGLE (slider)
-   =========================== */
+/* Active Link */
+.nav-links a.active {
+  color: #60a5fa;
+  font-weight: 600;
+  border-bottom: 2px solid #60a5fa;
+  padding-bottom: 2px;
+}
+
+/* ===============================
+   THEME TOGGLE (Slider)
+   =============================== */
 .theme-toggle-wrapper {
   position: absolute;
   right: 40px;
@@ -63,14 +79,13 @@
   transition: background 0.3s ease;
 }
 
-/* Toggle icons */
-.sun, .moon {
+.sun,
+.moon {
   position: relative;
   z-index: 2;
   transition: opacity 0.3s ease;
 }
 
-/* Slider animation ball */
 .slider::before {
   content: "";
   position: absolute;
@@ -83,7 +98,6 @@
   transition: transform 0.3s ease;
 }
 
-/* Checked (light mode) */
 .theme-toggle:checked + .slider {
   background: #cbd5e1;
 }
@@ -92,7 +106,9 @@
   transform: translateX(24px);
 }
 
-/* Mobile */
+/* ===============================
+   MOBILE VIEW FIXES
+   =============================== */
 @media (max-width: 768px) {
   .navbar {
     position: fixed;
@@ -100,21 +116,10 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10, 15, 25, 0.95);
+    background-color: inherit; /* ✅ matches page background */
     backdrop-filter: blur(8px);
     padding: 10px 0;
   }
-
-   .theme-toggle-wrapper {
-    margin-top: 5px;
-  }
-}
-.nav-links a.active {
-  color: #60a5fa; /* bright blue */
-  font-weight: 600;
-  border-bottom: 2px solid #60a5fa;
-  padding-bottom: 2px;
-}
 
   .nav-links {
     display: flex;
@@ -124,11 +129,25 @@
     gap: 10px;
   }
 
-    .nav-links li {
-    list-style: none;
-  }
-
-    .nav-links a {
+  .nav-links a {
     font-size: 0.9rem;
     padding: 6px;
   }
+
+  /* Move the theme slider slightly below navbar */
+  .theme-toggle-wrapper {
+    position: fixed;
+    top: 65px;
+    right: 20px;
+    z-index: 1001;
+  }
+
+  .theme-toggle {
+    transform: scale(0.9);
+  }
+
+  /* Prevent content overlap */
+  body {
+    padding-top: 90px !important;
+  }
+}
