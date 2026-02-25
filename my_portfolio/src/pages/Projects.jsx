@@ -4,25 +4,19 @@ import "../styling/Projects.css";
 
 function Projects() {
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(6);
 
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  const showMore = () => {
-    setVisibleCount((prev) => prev + 6);
-  };
-
-  const projectsToShow = projectsData.slice(0, visibleCount);
-  const hasMore = visibleCount < projectsData.length;
-
   return (
     <div className="projects">
-      <h1>🚀 Projects</h1>
+      <h1>🚀 Deployed AI Projects</h1>
+
       <div className="project-grid">
-        {projectsToShow.map((p, index) => {
+        {projectsData.map((p, index) => {
           const isExpanded = expandedIndex === index;
+
           return (
             <div
               key={p.title}
@@ -30,6 +24,7 @@ function Projects() {
             >
               <div className="project-content">
                 <h2>{p.title}</h2>
+
                 <div className="description-container">
                   <p className="description">
                     {isExpanded ? p.fullDesc : p.shortDesc}
@@ -37,11 +32,24 @@ function Projects() {
                 </div>
 
                 {isExpanded && (
-                  <div className="tech-list fade-in">
-                    {p.tech.map((t) => (
-                      <span key={t}>{t}</span>
-                    ))}
-                  </div>
+                  <>
+                    <div className="tech-list fade-in">
+                      {p.tech.map((t) => (
+                        <span key={t}>{t}</span>
+                      ))}
+                    </div>
+
+                    <div className="live-btn-wrapper fade-in">
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="live-btn"
+                      >
+                        🚀 View Live Deployment
+                      </a>
+                    </div>
+                  </>
                 )}
               </div>
 
@@ -57,14 +65,6 @@ function Projects() {
           );
         })}
       </div>
-
-      <button
-        className={`load-more-btn ${!hasMore ? "inactive" : ""}`}
-        onClick={hasMore ? showMore : undefined}
-        disabled={!hasMore}
-      >
-        {hasMore ? "Show more projects" : "All projects loaded"}
-      </button>
     </div>
   );
 }

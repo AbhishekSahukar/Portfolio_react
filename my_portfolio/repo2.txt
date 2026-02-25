@@ -1,46 +1,4 @@
-     "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
-      "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
-      "dev": true,
-      "license": "Python-2.0"
-    },
-    "node_modules/balanced-match": {
-      "version": "1.0.2",
-      "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz",
-      "integrity": "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==",
-      "dev": true,
-      "license": "MIT"
-    },
-    "node_modules/baseline-browser-mapping": {
-      "version": "2.8.25",
-      "resolved": "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.8.25.tgz",
-      "integrity": "sha512-2NovHVesVF5TXefsGX1yzx1xgr7+m9JQenvz6FQY3qd+YXkKkYiv+vTCc7OriP9mcDZpTC5mAOYN4ocd29+erA==",
-      "dev": true,
-      "license": "Apache-2.0",
-      "bin": {
-        "baseline-browser-mapping": "dist/cli.js"
-      }
-    },
-    "node_modules/brace-expansion": {
-      "version": "1.1.12",
-      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.12.tgz",
-      "integrity": "sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==",
-      "dev": true,
-      "license": "MIT",
-      "dependencies": {
-        "balanced-match": "^1.0.0",
-        "concat-map": "0.0.1"
-      }
-    },
-    "node_modules/browserslist": {
-      "version": "4.27.0",
-      "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-4.27.0.tgz",
-      "integrity": "sha512-AXVQwdhot1eqLihwasPElhX2tAZiBjWdJ9i/Zcj2S6QYIjkx62OKSfnobkriB81C3l4w0rVy3Nt4jaTBltYEpw==",
-      "dev": true,
-      "funding": [
-        {
-          "type": "opencollective",
-          "url": "https://opencollective.com/browserslist"
-        },
+   },
         {
           "type": "tidelift",
           "url": "https://tidelift.com/funding/github/npm/browserslist"
@@ -1477,4 +1435,143 @@ def read_file_safely(file_path):
             encoding = result.get('encoding') or 'utf-8'
             return raw.decode(encoding, errors='ignore')
     except Exception as e:
-        print(f"âš ï¸ 
+        print(f"âš ï¸ Skipping {file_path} ({e})")
+        return ""
+
+def collect_repo_contents(repo_root):
+    """Walk repo and collect all readable file contents."""
+    collected = []
+    for root, _, files in os.walk(repo_root):
+        for file in files:
+            file_path = os.path.join(root, file)
+
+            # skip itself and non-code files
+            if file_path.endswith("split_repo_into_parts.py"):
+                continue
+
+            # skip hidden/system/cache folders
+            if any(skip in file_path.lower() for skip in [
+                '.git', '__pycache__', '.venv', 'node_modules', '.idea', '.vscode'
+            ]):
+                continue
+
+            # skip large or binary files
+            if os.path.getsize(file_path) > 1_000_000 or is_binary(file_path):
+                continue
+
+            content = read_file_safely(file_path)
+            if not content.strip():
+                continue
+
+            relative_path = os.path.relpath(file_path, repo_root)
+            collected.append(f"{relative_path}\n{{{{\n{content}\n}}}}\n\n")
+
+    return collected
+
+def split_into_parts(collected, num_parts=4):
+    """Split collected content into roughly equal parts."""
+    joined = "".join(collected)
+    total_len = len(joined)
+    part_size = total_len // num_parts if total_len > 0 else 0
+    parts = [joined[i:i+part_size] for i in range(0, total_len, part_size)]
+    while len(parts) < num_parts:
+        parts.append("")
+    return parts[:num_parts]
+
+def write_parts(parts, repo_root):
+    for i, part in enumerate(parts, start=1):
+        filename = os.path.join(repo_root, f"repo{i}.txt")
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(part)
+        print(f"âœ… Wrote {filename} ({len(part)} chars)")
+
+def main():
+    repo_root = os.path.dirname(os.path.abspath(__file__))
+    print(f"ðŸ“ Scanning repo at: {repo_root}")
+
+    collected = collect_repo_contents(repo_root)
+    print(f"ðŸ“¦ Total files collected: {len(collected)}")
+
+    parts = split_into_parts(collected, num_parts=4)
+    write_parts(parts, repo_root)
+
+    print("ðŸŽ‰ Done! Generated repo1.txt â†’ repo4.txt in the repo root.")
+
+if __name__ == "__main__":
+    main()
+
+}}
+
+vercel.json
+{{
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
+
+}}
+
+vite.config.js
+{{
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// âœ… Vercel / Netlify compatible config
+export default defineConfig({
+  plugins: [react()],
+  base: '/',
+  build: { outDir: 'dist' },
+  server: { port: 5173 },
+})
+
+}}
+
+public\assets\resume.pdf
+{{
+%PDF-1.4%
+299 0 obj<</Linearized 1/L 105711/O 301/E 86247/N 2/T 99610/H [ 1096 251]>>endobj              
+xref
+299 40
+0000000016 00000 n
+0000001528 00000 n
+0000001684 00000 n
+0000006098 00000 n
+0000006832 00000 n
+0000006881 00000 n
+0000006929 00000 n
+0000006979 00000 n
+0000007029 00000 n
+0000007143 00000 n
+0000007255 00000 n
+0000007354 00000 n
+0000007916 00000 n
+0000008581 00000 n
+0000009616 00000 n
+0000010521 00000 n
+0000011369 00000 n
+0000012291 00000 n
+0000013179 00000 n
+0000014157 00000 n
+0000014996 00000 n
+0000015809 00000 n
+0000024401 00000 n
+0000024503 00000 n
+0000024584 00000 n
+0000025125 00000 n
+0000025787 00000 n
+0000026314 00000 n
+0000079873 00000 n
+0000080455 00000 n
+0000081085 00000 n
+0000081684 00000 n
+0000082152 00000 n
+0000082748 00000 n
+0000083122 00000 n
+0000083701 00000 n
+0000084460 00000 n
+0000086185 00000 n
+0000001347 00000 n
+0000001096 00000 n
+trailer
+<</Size 339/Root 300 0 R/Info 8 0 R/ID[<3B8073ECBA29DF42BD2E3A4C7C04C029><34D0DE907A2F8E4CBD25412D4F15D4D9>]
