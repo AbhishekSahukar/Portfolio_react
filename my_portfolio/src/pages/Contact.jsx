@@ -2,6 +2,7 @@ import "../styling/Contact.css";
 
 function Contact() {
   return (
+    <section className="contact-page">
     <div className="contact-container">
       <h2>📩 Contact Me</h2>
       <p className="contact-intro">
@@ -43,6 +44,7 @@ function Contact() {
         </div>
       </div>
     </div>
+    </section>
   );
 }
 

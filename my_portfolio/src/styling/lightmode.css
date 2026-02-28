@@ -1,0 +1,103 @@
+/* ===============================
+   GLOBAL LIGHT MODE
+   =============================== */
+body.light-mode {
+  background-color: #f4f5f7;          /* full-page light background */
+  color: #1e293b;                    /* readable dark text */
+}
+
+/* make every child inherit light background but DON'T change layout */
+body.light-mode .app-container,
+body.light-mode .page-content,
+body.light-mode section,
+body.light-mode div {
+  background-color: #f4f5f7 !important;
+  color: #1e293b !important;
+}
+
+/* ===============================
+   NAVBAR
+   =============================== */
+body.light-mode .navbar {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .nav-links a {
+  color: #1e293b;
+}
+
+/* ===============================
+   TEXT ELEMENTS
+   =============================== */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+  background: linear-gradient(90deg, #2563eb, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light-mode p,
+body.light-mode li {
+  color: #334155;
+}
+
+/* ===============================
+   CARDS / PROJECT BOXES
+   =============================== */
+body.light-mode .project-card,
+body.light-mode .contact-card a,
+body.light-mode .resume-frame {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ===============================
+   BUTTONS
+   =============================== */
+body.light-mode button {
+  color: #1e293b;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+}
+
+body.light-mode button:hover {
+  background: linear-gradient(90deg, #2563eb, #9333ea);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+body.light-mode .footer {
+  background: rgba(255, 255, 255, 0.9);
+  color: #475569;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+/* ===============================
+   TRANSITIONS
+   =============================== */
+body,
+.app-container,
+.page-content,
+.navbar,
+.footer,
+section {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+/* ===============================
+   FOOTER (strong override)
+   =============================== */
+body.light-mode footer.footer {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #1e293b !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(8px) !important;
+}

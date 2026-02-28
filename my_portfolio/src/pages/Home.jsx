@@ -13,7 +13,7 @@ I’m an Engineer with a passion for building modern, efficient, and user-focuse
 I enjoy turning ideas into functional products through clean design, structured logic, and attention to detail.  
 Currently, I’m working on projects that combine automation, intelligent systems, and thoughtful design to solve real-world problems.
         </p>
-        <p>🌍 Based in Bengaluru, India</p>
+        <p>🌍 Based in Mannheim, Germany</p>
       </div>
     </div>
   );

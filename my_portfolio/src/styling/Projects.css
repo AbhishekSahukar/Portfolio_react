@@ -1,4 +1,4 @@
-/* ========== PROJECTS PAGE ========== */
+
 .projects {
   width: 100%;
   max-width: 1000px;
@@ -20,7 +20,7 @@
   text-align: center;
 }
 
-/* ========== GRID ========== */
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-/* ========== CARD ========== */
+
 .project-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -56,7 +56,7 @@
   transition: height 0.6s ease, background 0.4s ease;
 }
 
-/* ========== CONTENT ========== */
+
 .project-content {
   flex-grow: 1;
   display: flex;
@@ -70,7 +70,7 @@
   color: #e2e8f0;
 }
 
-/* Center short description vertically */
+
 .description-container {
   flex: 1;
   display: flex;
@@ -88,7 +88,7 @@
   text-align: center;
 }
 
-/* ========== TECH TAGS ========== */
+
 .tech-list {
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +98,7 @@
   transform: translateY(10px);
   transition: all 0.4s ease;
   margin-top: 10px;
-  margin-bottom: 14px; /* 👈 adds a clean gap before See less */
+  margin-bottom: 14px; 
 }
 
 .project-card.expanded .tech-list {
@@ -114,12 +114,12 @@
   font-size: 0.75rem;
 }
 
-/* ========== SEE MORE BUTTON ========== */
+
 .see-more-wrapper {
   margin-top: auto;
   display: flex;
   justify-content: center;
-  padding-top: 4px; /* 👈 small padding for breathing space */
+  padding-top: 4px; 
 }
 
 .see-more-btn {
@@ -140,7 +140,7 @@
   border-color: transparent;
 }
 
-/* ========== LOAD MORE BUTTON ========== */
+
 .load-more-btn {
   margin-top: 40px;
   background: transparent;
@@ -159,7 +159,7 @@
   border-color: transparent;
 }
 
-/* Inactive (disabled) state */
+
 .load-more-btn.inactive,
 .load-more-btn:disabled {
   opacity: 0.5;
@@ -169,7 +169,7 @@
   background: transparent;
 }
 
-/* ========== RESPONSIVE ========== */
+
 @media (max-width: 992px) {
   .projects h1 {
     font-size: 2rem;
@@ -206,4 +206,40 @@
     padding: 8px 16px;
     font-size: 0.85rem;
   }
+}
+.live-btn-wrapper {
+  margin-top: 15px;
+}
+
+.live-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.live-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.see-more-wrapper {
+  margin-top: 25px;
+}
+
+
+.live-btn-wrapper {
+  margin-top: 20px;
 }

@@ -1,34 +1,37 @@
 [
   {
-    "title": "MetaTableAI – LLM-Powered Table Extractor",
-    "shortDesc": "Built a parser that extracts key parameters from complex PDF tables using LangGraph + OpenRouter APIs.",
-    "fullDesc": "MetaTableAI automates parameter extraction from messy tabular PDFs by combining LangGraph nodes with dynamic prompt chaining. It detects headers, context, and units with fuzzy alignment to produce structured JSON outputs for analytics pipelines.",
-    "tech": ["Python", "LangGraph", "OpenRouter", "DeepSeek Chat v3"]
+    "title": "AI Cover Letter Bot",
+    "shortDesc": "LLM-based system that generates tailored cover letters from job descriptions.",
+    "fullDesc": "Production-deployed LLM application that generates tailored cover letters by analyzing job descriptions and resumes. Built with structured prompt engineering and deployed on AWS Elastic Beanstalk.",
+    "tech": ["React", "Python", "LLM APIs", "AWS Elastic Beanstalk"],
+    "live": "http://coverletter-ai-env.eba-dg3auwrz.ap-south-1.elasticbeanstalk.com/"
   },
   {
-    "title": "RAG-based Personal AI Chatbot",
-    "shortDesc": "FastAPI backend + Mistral 7B + FAISS vector search for contextual responses.",
-    "fullDesc": "Developed a lightweight RAG system with FastAPI and FAISS vector indexing. Uses local embeddings for privacy, contextual memory persistence, and streaming chat responses .",
-    "tech": ["FastAPI", "Docker", "Azure", "Mistral 7B"]
+    "title": "AskSheets AI",
+    "shortDesc": "Conversational AI for querying spreadsheet data using natural language.",
+    "fullDesc": "Cloud-deployed conversational AI system enabling natural language queries over spreadsheet data. Implements structured parsing and LLM-powered insights generation.",
+    "tech": ["React", "RAG", "LLMs", "AWS Elastic Beanstalk"],
+    "live": "http://asksheets-env.eba-kjph7vug.ap-south-1.elasticbeanstalk.com/static/chat.html"
   },
   {
-    "title": "DreamCatcher – AI-Powered Dream Interpretation Web App",
-    "shortDesc": "Developed a full-stack AI chatbot that interprets user dreams using MistralAI and Tavily Search.",
-    "fullDesc": "DreamCatcher fetches live symbolic meanings via Tavily API, analyzes sentiment and archetypes using MistralAI, and presents calming visual feedback through a React UI built with soft gradients and subtle animations.",
-    "tech": ["FastAPI", "MistralAI", "Tavily API", "React.js", "OpenRouter"]
+    "title": "DreamCatcher",
+    "shortDesc": "AI-powered dream interpretation platform using LLMs.",
+    "fullDesc": "LLM-based dream analysis platform that interprets user-submitted sleep dreams. Extracts emotional tone, symbolic patterns, and recurring themes using structured prompt engineering. Deployed on Render.",
+    "tech": ["React", "Python", "LLM APIs", "Render"],
+    "live": "https://dreamcatcher-llg2.onrender.com/"
   },
-
   {
-    "title": "InfraMind – AI DevOps Agent for Cloud Infra",
-    "shortDesc": "An agentic system that simulates aws services like EC2 and S3 through prompts",
-    "fullDesc": "InfraMind is an intelligent assistant that lets you manage AWS resources using natural language.It runs fully locally with LocalStack and uses LLMs (DeepSeek/OpenRouter) for intent detection.",
-    "tech": ["Python", "LangGraph", "AWS", "Deepseek"]
+    "title": "OrderBot",
+    "shortDesc": "Conversational AI order management assistant.",
+    "fullDesc": "Production-style AI ordering assistant with structured conversational flows and backend architecture. Deployed on AWS Elastic Beanstalk.",
+    "tech": ["FastAPI", "LLM APIs", "Docker", "AWS"],
+    "live": "http://orderbot-env.eba-pczhqp7j.ap-south-1.elasticbeanstalk.com/"
   },
-
   {
-    "title": "AskSheetsAI",
-    "shortDesc": "Conversational AI interface for Excel and Google Sheets.",
-    "fullDesc": "Supports querying and extracts required data from excel and google sheets",
-    "tech": ["Python",  "GPT", "Google Sheets API"]
+    "title": "RAG Assistant",
+    "shortDesc": "Retrieval-Augmented Generation AI assistant.",
+    "fullDesc": "RAG-based AI system implementing document chunking, embeddings, vector similarity search, and context-aware responses. Fully deployed on AWS Elastic Beanstalk.",
+    "tech": ["FastAPI", "FAISS", "Docker", "AWS"],
+    "live": "http://rag-assistant-env1.eba-m3utmnyv.ap-south-1.elasticbeanstalk.com/"
   }
 ]
