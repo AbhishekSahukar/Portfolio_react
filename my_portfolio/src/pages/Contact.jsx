@@ -7,7 +7,6 @@ function Contact() {
       <h2>📩 Contact Me</h2>
       <p className="contact-intro">
         If you’d like to get in touch, feel free to reach out via any of the channels below.<br />
-        I’d love to connect and collaborate!
       </p>
 
       <div className="contact-list">
@@ -18,7 +17,7 @@ function Contact() {
 
         <div className="contact-item">
           <span className="icon">📞</span>
-          <a href="tel:+917259248986">+91 7259248986</a>
+          <a href="tel:+917259248986">+49 15215750228 </a>
         </div>
 
         <div className="contact-item">
