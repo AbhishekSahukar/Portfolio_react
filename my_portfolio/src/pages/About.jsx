@@ -21,7 +21,7 @@ function About() {
           <h3>🧠 Skills</h3>
           <ul>
             <li>Python Development,FastAPI, REST APIs</li>
-            <li>GenAI and LLM Integration: Langchain, Langgraph, Langfuse, RAG etc</li>
+            <li>GenAI and LLM Integration: Langchain, Langgraph, Langfuse, RAG</li>
             <li>Cloud &amp; DevOps: AWS, Docker, Render</li>
             <li>UI/UX: Figma, Canva, Streamlit</li>
           </ul>
