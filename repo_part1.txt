@@ -1,0 +1,407 @@
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\README.md
+================================================================================
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\eslint.config.js
+================================================================================
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs['recommended-latest'],
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\index.html
+================================================================================
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>my_portfolio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\package.json
+================================================================================
+{
+  "name": "my_portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "vite": "^7.1.7"
+  }
+}
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\vercel.json
+================================================================================
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\vite.config.js
+================================================================================
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// ✅ Vercel / Netlify compatible config
+export default defineConfig({
+  plugins: [react()],
+  base: '/',
+  build: { outDir: 'dist' },
+  server: { port: 5173 },
+})
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\src\App.jsx
+================================================================================
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Resume from "./pages/Resume";
+import Contact from "./pages/Contact";
+import "./styling/App.css";
+import "./styling/lightmode.css";
+
+function App() {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    document.body.className = theme === "light" ? "light-mode" : "";
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  return (
+    <Router>
+      <div className="app-container">
+        <Navbar theme={theme} setTheme={setTheme} />
+        <main className="page-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\src\index.css
+================================================================================
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\src\main.jsx
+================================================================================
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\src\components\Footer.jsx
+================================================================================
+import "../styling/Footer.css";
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <p>© {new Date().getFullYear()} Abhishek Sahukar Srinivas | All Rights Reserved</p>
+    </footer>
+  );
+}
+
+export default Footer;
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\src\components\Navbar.jsx
+================================================================================
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "../styling/Navbar.css";
+
+function Navbar({ theme, setTheme }) {
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+
+  return (
+    <nav className="navbar">
+      <ul className="nav-links">
+        <li>
+          <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : "")}>
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/projects" className={({ isActive }) => (isActive ? "active" : "")}>
+            Projects
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/resume" className={({ isActive }) => (isActive ? "active" : "")}>
+            Resume
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
+            Contact
+          </NavLink>
+        </li>
+
+        {/* 🌗 Theme Toggle Slider */}
+        <li className="toggle-item">
+          <div className="theme-toggle-wrapper">
+            <input
+              type="checkbox"
+              id="theme-toggle"
+              className="theme-toggle"
+              checked={theme === "light"}
+              onChange={toggleTheme}
+            />
+            <label htmlFor="theme-toggle" className="slider">
+              <span className="sun">☀️</span>
+              <span className="moon">🌙</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+
+
+================================================================================
+FILE: D:/Docs/Jobs/Projects/Deployed/Abhishek_Portfolio\my_portfolio\src\pages\About.jsx
+================================================================================
+import "../styling/About.css";
+
+function About() {
+  return (
+    <section className="about-page">
+      <div className="about-container">
+        <h1>About Me</h1>
+
+        <p className="about-intro">
+          I'm <strong>Abhishek Sahukar Srinivas</strong>, an engineer with hands-on
+          experience in software design, cloud, and Generative AI. I combine technical
+          skill with design thinking to build intelligent, elegant solutions.
+          <br />
+          Over the years, I’ve worked across design, backend systems, web development,
+          and data-driven applications — gaining hands-on experience in Python, FastAPI,
+          React, and cloud technologies like Azure and AWS.
+        </p>
+
+        {/* ===== Skills Section ===== */}
+        <div className="about-section">
+          <h3>🧠 Skills</h3>
+          <ul>
+            <li>Python Development, LangGraph, FastAPI, REST APIs</li>
+            <li>LLM Integrations (OpenRouter, DeepSeek, Mistral)</li>
+            <li>Cloud & DevOps: Azure, AWS, Docker</li>
+            <li>UI/UX: Figma, Canva, Streamlit</li>
+          </ul>
+        </div>
+
+        {/* ===== Education Section ===== */}
+        <div className="about-section">
+          <h3>🎓 Education</h3>
+          <p>
+            B.E. in Mechanical Engineering – Visvesvaraya Technological University (2023)
+          </p>
+        </div>
+
+        {/* ===== Hobbies Section ===== */}
+        <div className="about-section">
+          <h3>🏋️‍♂️ Hobby</h3>
+          <p>Fitness </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default About;
+
+
+
