@@ -11,18 +11,18 @@ function About() {
           experience in software design, cloud, and Generative AI. I combine technical
           skill with design thinking to build intelligent, elegant solutions.
           <br />
-          Over the years, I’ve worked across design, backend systems, web development,
-          and data-driven applications — gaining hands-on experience in Python, FastAPI,
-          React, and cloud technologies like Azure and AWS.
+          Over the years, I've worked across design, backend systems, web development,
+          and data-driven applications gaining hands-on experience in Python, FastAPI,
+          React, LLM's and GenAI and also cloud technologies.
         </p>
 
         {/* ===== Skills Section ===== */}
         <div className="about-section">
           <h3>🧠 Skills</h3>
           <ul>
-            <li>Python Development, LangGraph, FastAPI, REST APIs</li>
-            <li>LLM Integrations (OpenRouter, DeepSeek, Mistral)</li>
-            <li>Cloud & DevOps: Azure, AWS, Docker</li>
+            <li>Python Development,FastAPI, REST APIs</li>
+            <li>GenAI and LLM Integration: Langchain, Langgraph, Langfuse, RAG</li>
+            <li>Cloud &amp; DevOps: AWS, Docker, Render</li>
             <li>UI/UX: Figma, Canva, Streamlit</li>
           </ul>
         </div>
@@ -31,6 +31,9 @@ function About() {
         <div className="about-section">
           <h3>🎓 Education</h3>
           <p>
+            MSc Applied Computer Science – SRH Hochschule Heidelberg (ongoing)
+          </p>
+          <p>
             B.E. in Mechanical Engineering – Visvesvaraya Technological University (2023)
           </p>
         </div>
@@ -38,7 +41,7 @@ function About() {
         {/* ===== Hobbies Section ===== */}
         <div className="about-section">
           <h3>🏋️‍♂️ Hobby</h3>
-          <p>Fitness </p>
+          <p>Fitness</p>
         </div>
       </div>
     </section>
